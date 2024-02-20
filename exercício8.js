@@ -6,7 +6,7 @@
 //Se é a primeira compra do cliente, pagar a vista e a compra for menor que R$1000 e maior que R$500 =>  25% de desconto.
 //Se é a primeira compra do cliente, pagar a vista e a compra for menor que R$500 => 20% de desconto.
 //Se é a primeira compra do cliente, não pagar a vista e a compra for maior que R$1000 => 20% de desconto.
-//Se é a primeira compra do cliente, não pagar a vista e a compra for menor que R$1000 e menor que R$500 => 15% de desconto.
+//Se é a primeira compra do cliente, não pagar a vista e a compra for menor que R$1000 e maior que R$500 => 15% de desconto.
 //Se é a primeira compra do cliente, não pagar a vista e a compra for menor que R$500 => 10% de desconto.
 //Se não é a primeira compra do cliente, pagar a vista e a compra for maior que R$1000 => 20% de desconto.
 //Se não é a primeira compra do cliente, pagar a vista e a compra for menor que R$1000 e maior que R$500 => 15% de desconto.
@@ -25,21 +25,122 @@ function compras(name, value, fisrtPurchase, purchaseInCash) {
   ) {
     console.log(
       `Obrigado ${name} por comprar na Deni and Denison's. A sua compra foi de ${value} e você ganhou 30% de desconto, o valor final ficou R$${
-        value * 0.7
+        value * (0.7).toFixed(2)
       }`
     );
   } else if (
     value > 500 &&
-    value < 1000 &&
+    value <= 1000 &&
     fisrtPurchase == "primeira compra" &&
     purchaseInCash == "pagar no dinheiro"
   ) {
     console.log(
       `Obrigado ${name} por comprar na Deni and Denison's a sua compra foi de ${value} e você ganhou 25% de desconto, o valor final ficou de R$${
-        value * 0.7
+        value * (0.75).toFixed(2)
       }`
+    );
+  } else if (
+    value < 500 &&
+    fisrtPurchase == "primeira compra" &&
+    purchaseInCash == "pagar no dinheiro"
+  ) {
+    console.log(
+      `Obrigado ${name} por comprar na Deni and Denison's. A sua compra foi de ${value} e você ganhou 20% de desconto, o valor final ficou R$${
+        value * (0.8).toFixed(2)
+      }`
+    );
+  } else if (
+    value > 1000 &&
+    fisrtPurchase == "primeira compra" &&
+    purchaseInCash == "pagar parcelado"
+  ) {
+    console.log(
+      `Obrigado ${name} por comprar na Deni and Denison's. A sua compra foi de ${value} e você ganhou 20% de desconto, o valor final ficou R$${
+        value * (0.8).toFixed(2)
+      }`
+    );
+  } else if (
+    value <= 1000 &&
+    value > 500 &&
+    fisrtPurchase == "primeira compra" &&
+    purchaseInCash == "pagar parcelado"
+  ) {
+    console.log(
+      `Obrigado ${name} por comprar na Deni and Denison's. A sua compra foi de ${value} e você ganhou 15% de desconto, o valor final ficou R$${
+        value * (0.85).toFixed(2)
+      }`
+    );
+  } else if (
+    value < 500 &&
+    fisrtPurchase == "primeira compra" &&
+    purchaseInCash == "pagar parcelado"
+  ) {
+    console.log(
+      `Obrigado ${name} por comprar na Deni and Denison's. A sua compra foi de ${value} e você ganhou 10% de desconto, o valor final ficou R$${
+        value * (0.9).toFixed(2)
+      }`
+    );
+  } else if (
+    value > 1000 &&
+    fisrtPurchase == "não é a primeira compra" &&
+    purchaseInCash == "pagar no dinheiro"
+  ) {
+    console.log(
+      `Obrigado ${name} por comprar na Deni and Denison's. A sua compra foi de ${value} e você ganhou 20% de desconto, o valor final ficou R$${
+        value * (0.8).toFixed(2)
+      }`
+    );
+  } else if (
+    value <= 1000 &&
+    value > 500 &&
+    fisrtPurchase == "não é a primeira compra" &&
+    purchaseInCash == "pagar no dinheiro"
+  ) {
+    console.log(
+      `Obrigado ${name} por comprar na Deni and Denison's. A sua compra foi de ${value} e você ganhou 15% de desconto, o valor final ficou R$${
+        value * (0.85).toFixed(2)
+      }`
+    );
+  } else if (
+    value < 500 &&
+    fisrtPurchase == "não é a primeira compra" &&
+    purchaseInCash == "pagar no dinheiro"
+  ) {
+    console.log(
+      `Obrigado ${name} por comprar na Deni and Denison's. A sua compra foi de ${value} e você ganhou 30% de desconto, o valor final ficou R$${
+        value * (0.9).toFixed(2)
+      }`
+    );
+  } else if (
+    value > 1000 &&
+    fisrtPurchase == "não é aprimeira compra" &&
+    purchaseInCash == "pagar parcelado"
+  ) {
+    console.log(
+      `Obrigado ${name} por comprar na Deni and Denison's. A sua compra foi de ${value} e você ganhou 10% de desconto, o valor final ficou R$${
+        value * (0.9).toFixed(2)
+      }`
+    );
+  } else if (
+    value >= 1000 &&
+    value < 500 &&
+    fisrtPurchase == "não é a primeira compra" &&
+    purchaseInCash == "pagar parcelado"
+  ) {
+    console.log(
+      `Obrigado ${name} por comprar na Deni and Denison's. A sua compra foi de ${value} e você ganhou 5% de desconto, o valor final ficou R$${
+        value * (0.95).toFixed(2)
+      }`
+    );
+  } else if (
+    value < 500 &&
+    fisrtPurchase == " não é a primeira compra" &&
+    purchaseInCash == "pagar parcelado"
+  ) {
+    console.log(
+      `Obrigado ${name} por comprar na Deni and Denison's. A sua compra foi de ${value} e você não ganhou nenhum desconto, o valor final ficou R$${value}`
     );
   }
 }
 
-compras("Denis", 1100, "primeira compra", "pagar no dinheiro");
+compras("Denis", 1001, "primeira compra", "pagar no dinheiro");
